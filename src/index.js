@@ -5,17 +5,6 @@ import HomePage from "./pages/homePage";
 import MoviePage from "./pages/movieDetailsPage";
 import FavoriteMoviesPage from "./pages/favoriteMoviesPage"; 
 
-{/*const App = () => {
-  return (
-    <BrowserRouter>
-      <Switch>
-        <Route path="/movies/:id" component={MoviePage} />
-        <Route path="/" component={HomePage} />
-        <Redirect from="*" to="/" />
-      </Switch>
-    </BrowserRouter>
-  );
-}; */}
 const App = () => {
   return (
     <BrowserRouter>
