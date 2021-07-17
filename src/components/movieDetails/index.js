@@ -11,6 +11,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import MovieReviews from "../movieReviews";
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -62,15 +63,34 @@ const MovieDetails = ({ movie }) => {
         />
         <Chip
           icon={<StarRate />}
-          label={`${movie.vote_average} (${movie.vote_count}`}
+          label={`${movie.vote_average} (${movie.vote_count})`}
         />
         <Chip label={`Released: ${movie.release_date}`} />
+        <Chip label={`Popularity: ${movie.popularity}`} />
       </Paper>
       <Paper component="ul" className={classes.root}>
         <li>
           <Chip label="Production Countries" className={classes.chip} color="primary" />
         </li>
         {movie.production_countries.map((p) => (
+          <li key={p.name}>
+            <Chip label={p.name} className={classes.chip} />
+          </li>
+        ))}
+        <li>
+          <Chip label="Production Companies" className={classes.chip} color="primary" />
+        </li>
+        {movie.production_companies.map((p) => (
+          <li key={p.name}>
+            <Chip label={p.name} className={classes.chip} />
+          </li>
+        ))}
+      </Paper>
+      <Paper component="ul" className={classes.root}>
+      <li>
+          <Chip label="Cast" className={classes.chip} color="primary" />
+        </li>
+        {movie.credits.cast.map((p) => (
           <li key={p.name}>
             <Chip label={p.name} className={classes.chip} />
           </li>
