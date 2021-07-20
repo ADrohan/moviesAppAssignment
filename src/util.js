@@ -6,3 +6,9 @@ export function excerpt(string) {
     separator: /,?\.* +/, // separate by spaces, including preceding commas and periods
   });
 }
+export function compact(string) {
+  return truncate(string, {    
+    length: 200, // maximum 400 characters
+    separator: /,?\.* +/, // separate by spaces, including preceding commas and periods
+  });
+}
