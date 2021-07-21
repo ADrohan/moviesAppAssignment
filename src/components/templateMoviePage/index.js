@@ -7,6 +7,7 @@ import GridListTile from "@material-ui/core/GridListTile";
 import { getMovieImages } from "../../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from '../spinner';
+import Hidden from "@material-ui/core/Hidden";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -41,21 +42,22 @@ const images = data.posters
       <MovieHeader movie={movie} />
 
       <Grid container spacing={5} style={{ padding: "15px" }}>
-        <Grid item xs={3}>
-          <div className={classes.root}>
-            <GridList cellHeight={500} className={classes.gridList} cols={1}>
-              {images.map((image) => (
-                <GridListTile key={image.file_path} className={classes.gridListTile} cols={1}>
-                  <img
-                    src={`https://image.tmdb.org/t/p/w500/${image.file_path}`}
-                    alt={image.poster_path}
-                  />
-                </GridListTile>
-              ))}
-            </GridList>
-          </div>
-        </Grid>
-
+        <Hidden xsDown>
+          <Grid item xs={3}>
+            <div className={classes.root}>  
+                <GridList cellHeight={500} className={classes.gridList} cols={1}>
+                  {images.map((image) => (
+                    <GridListTile key={image.file_path} className={classes.gridListTile} cols={1}>
+                      <img
+                        src={`https://image.tmdb.org/t/p/w500/${image.file_path}`}
+                        alt={image.poster_path}
+                      />
+                    </GridListTile>
+                  ))}
+                </GridList>           
+            </div>
+          </Grid>
+        </Hidden>
         <Grid item xs={9}>
           {children}
         </Grid>
