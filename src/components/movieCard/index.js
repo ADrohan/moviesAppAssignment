@@ -15,6 +15,7 @@ import img from '../../images/film-poster-placeholder.png'
 import { Link } from "react-router-dom";
 import Avatar from "@material-ui/core/Avatar";
 import { MoviesContext } from "../../contexts/moviesContext";
+import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
 
 const useStyles = makeStyles({
   card: { maxWidth: 345 },
@@ -26,7 +27,8 @@ const useStyles = makeStyles({
 
 export default function MovieCard({ movie, action }) {
   const classes = useStyles();
-  const { favorites } = useContext(MoviesContext);
+  const { favorites , mustWatch} = useContext(MoviesContext);
+  //const { mustWatch } = useContext(MoviesContext);
 
   if (favorites.find((id) => id === movie.id)) {
     movie.favorite = true;
@@ -34,40 +36,53 @@ export default function MovieCard({ movie, action }) {
     movie.favorite = false
   }
 
+  if (mustWatch.find((id) => id === movie.id)) {
+    movie.mustWatch = true;
+  } else {
+    movie.mustWatch = false
+  }
+
   return (
     <Card className={classes.card}>
        <CardHeader
           className={classes.header}
+          avatar={
+            movie.mustWatch ? (
+              <Avatar className={classes.avatar}>
+                <PlaylistAddCheckIcon />
+              </Avatar>
+            ) : null
+          }
           avatar={
             movie.favorite ? (
               <Avatar className={classes.avatar}>
                 <FavoriteIcon />
               </Avatar>
             ) : null
-         }
-         title={
-          <Typography variant="h5" component="p">
-            {movie.title}{" "}
-          </Typography>
-        }
-    />
-      <CardMedia
-        className={classes.media}
-        image={
-          movie.poster_path
-            ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
-            : img
-        }
-      />
-      <CardContent>
-        <Grid container>
-          <Grid item xs={6}>
-            <Typography variant="h6" component="p">
-              <CalendarIcon fontSize="small" />
-              {movie.release_date}
+          }
+          title={
+            <Typography variant="h5" component="p">
+              {movie.title}{" "}
             </Typography>
-          </Grid>
-          <Grid item xs={6}>
+          }
+       />
+       <CardMedia
+         className={classes.media}
+          image={
+            movie.poster_path
+              ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+              : img
+          }
+       />
+       <CardContent>
+         <Grid container>
+           <Grid item xs={6}>
+             <Typography variant="h6" component="p">
+               <CalendarIcon fontSize="small" />
+               {movie.release_date}
+             </Typography>
+           </Grid>
+           <Grid item xs={6}>
             <Typography variant="h6" component="p">
               <StarRateIcon fontSize="small" />
               {"  "} {movie.vote_average}{" "}
