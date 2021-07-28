@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
@@ -6,12 +6,12 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import StarRateIcon from "@material-ui/icons/StarRate";
-import IconButton from "@material-ui/core/IconButton";
 import Grid from "@material-ui/core/Grid";
 import img from '../../images/film-poster-placeholder.png';
 import { compact } from "../../util";
+import { Link } from "react-router-dom";
+import { MoviesContext } from "../../contexts/moviesContext";
 
 
 const useStyles = makeStyles({
@@ -20,9 +20,7 @@ const useStyles = makeStyles({
     backgroundColor: "rgb(30, 30, 30)",
     color: "rgb(200, 200, 200)",
   },
-  media: { height: 420},
-  avatar: {
-    backgroundColor: "rgb(255, 0, 0)",
+  media: { height: 420
   },
   star: { 
     color: "rgb(210, 210, 0)",
@@ -34,13 +32,19 @@ const useStyles = makeStyles({
   }
 });
 
-export default function MovieCard(props) {
+export default function MovieCard({movie, action }) {
   const classes = useStyles();
-  const movie = props.movie;
+  const { favorites } = useContext(MoviesContext);
+
+  if (favorites.find((id) => id === movie.id)) {
+    movie.favorite = true;
+  } else {
+    movie.favorite = false
+  }
+
   return (
-    <Card className={classes.card}  >
-      
-       <CardMedia
+    <Card className={classes.card}>
+      <CardMedia
         className={classes.media}
         image={
           movie.poster_path
@@ -62,14 +66,14 @@ export default function MovieCard(props) {
             </Typography>
           </Grid>  
         </Grid>
-      </CardContent>
+      </CardContent> 
       <CardActions>
-        <IconButton aria-label="add to favorites" onClick={null}>
-          <FavoriteBorderIcon color="secondary" fontSize="large" />
-        </IconButton>
-        <Button className={classes.buttonStyle} variant="outlined" size="large" color="secondary" align="right">
-          More Info ...
-        </Button>
+        {action(movie)}
+        <Link to={`/movies/${movie.id}`}>
+          <Button className={classes.buttonStyle} variant="outlined" size="large" color="secondary" align="right">
+            More Info ...
+          </Button>
+        </Link>
       </CardActions>
     </Card>
   );
