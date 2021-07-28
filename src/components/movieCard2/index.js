@@ -20,7 +20,7 @@ const useStyles = makeStyles({
     backgroundColor: "rgb(30, 30, 30)",
     color: "rgb(200, 200, 200)",
   },
-  media: { height: 380},
+  media: { height: 420},
   avatar: {
     backgroundColor: "rgb(255, 0, 0)",
   },
@@ -51,11 +51,10 @@ export default function MovieCard(props) {
       <CardContent>
         <Grid container>
           <Grid item xs={6}>
-              <Typography className={classes.star} variant="h4" component="p">
-                
-                {movie.vote_average}
-                <StarRateIcon fontSize="medium" />
-              </Typography>
+            <Typography className={classes.star} variant="h4" component="p">
+              {movie.vote_average}
+              <StarRateIcon fontSize="medium" />
+            </Typography>
           </Grid>
           <Grid item xs={12}>
             <Typography variant="body2" component="p" align="center">
