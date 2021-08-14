@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "rgb(30, 30, 30)",
     color: "rgb(220, 220, 200)",
   },
-  media: { height: 420},
+  media: { height: 475},
 
   formControl: {
     margin: theme.spacing(1),
@@ -47,7 +47,7 @@ export default function FilterMoviesCard2(props) {
  }
 
  const genres = data.genres
- if (genres[0].name!= 'All') {
+ if (genres[0].name!== 'All') {
  genres.unshift({ id: "0", name: "All" });
  }
 
