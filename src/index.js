@@ -14,6 +14,7 @@ import AddMovieReviewPage from './pages/addMovieReviewPage';
 import MustWatchPage from './pages/mustWatchPage';
 import TopRatedMoviesPage from './pages/topRatedMoviesPage';
 import TrendingMoviesPage from './pages/trendingMoviesPage';
+import similarMoviesPage from "./pages/similarMoviesPage";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -40,7 +41,7 @@ const App = () => {
               <Route exact path="/movies/favorites" component={FavoriteMoviesPage} />
               <Route exact path="/movies/watch" component={MustWatchPage} />
               <Route exact path="/movies/top-rated" component={TopRatedMoviesPage} />
-             
+              <Route path="/similar/:id" component={similarMoviesPage} />
               <Route path="/movies/:id" component={MoviePage} />
               <Route exact path="/" component={HomePage} />
               <Redirect from="*" to="/" />
