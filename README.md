@@ -1,31 +1,52 @@
 # Assignment - ReactJS app.
 
-Name: ... your name ...
+Name: Aileen Drohan
 
 ## Overview.
 
-...... State the app concept and objectives. If it's the Movies Fan app extension, only state the additional objectives .........
+The app concept is to expand upon the Movies App - an app for movie lovers - created using the TMBD database.
 
-
-...... A bullet-point list of user features. If it's the Movies Fan app extension, only list new/modified features...... 
+ New/modified features:
  
- + Feature 1
- + Feature 2
- + Feature 3
- + etc
- + etc
+ + Must Watch page (renders tagged upcoming movies in Must Watch Page)
+ + movieCard2 (new UI design)
+ + templateMoviesListPage2 (new UIdesign)
+ + filterMoviesCard2 (new UI design)
+ + util.js (compact function added to truncate character length to 200)
+ + templateMoviePage (production companies and cast added)
+ + templateMoviePage (breakpoint down integration with grid)
+ + Top rated movies Page (utilising new UI design)
+ + Trending Movies Page (utilising new UI design)
 
 ## Setup requirements.
 
-...... A brief explanation (to a third party) of any non-standard setup steps necessary to run your app/client locally (after cloning the repo) ........
+To run this app A TMDb user account is required. You must create an account and request an API key. 
+https://developers.themoviedb.org/3/getting-started/introduction
+
+Your API key should be kept secret.
+Create a .env file to separate your secrets from your source code. Required in this .env file is:
+REACT_APP_TMDB_KEY='your api key'
+FAST_REFRESH=false
+
+Don't forget to nclude your .env file in your .gitignore (before pushing to your own repository to keep your api key a secret)
+
+Run npm install (from the app base folder)
+Run npm start
+Run npm run storybook (if relevant)
 
 ## API Data Model.
 
-..... [For non-Movies Fan app] Insert a diagram of the API's data model (see example below) AND/OR a sample(s) of the JSON documents returned by its endpoints ........
+https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_TMDB_KEY}&append_to_response=credits
 
-![][model]
+![][append]
 
-......[For the Movies Fan app] Specify the additional TMDB endpoints used and show sample responses, in JSON .........
+https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&page=1
+
+![][toprated]
+
+https://api.themoviedb.org/3/trending/movie/day?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&page=1
+
+![][trending]
 
 ## App Design.
 
@@ -37,27 +58,40 @@ Name: ... your name ...
 
 ### UI Design.
 
-...... Insert screenshots of the app's views, with appropriate captions (see example below). (For the Movies Fan App, only show the new/modified views) ........
+![][mustwatch]
+>Shows the tagged must watch movies as selected in the upcoming movies page.
 
-![][view]
->Shows detailed information on a movie. Clicking the 'Reviews' floating action button will display extracts from critic reviews.
+![][topratedmovies]
+>Top Rated movies page.
+
+![][trendingmovies]
+>Trending movies page.
+
 
 ### Routing.
 
-...... Insert a list of the routes supported by your app and state the associated view. If relevant, specify which of the routes require authentication, i.e. protected/private. [For the Movies Fan app, only new routes should be listed.] ......... 
++ GET /movie/{movie_id}   - with append_to_response support for credits
++ GET /trending/{media_type}/{time_window}  - media_type used = movie, time_window used = day
++ GET /movie/top_rated - gets top rated movies
 
-+ GET /blogs - displays all published blogs.
-+ POST /blogs (protected) - add a new blog.
-+ GET /blogs/:id - displays a particular blog.
-+ GET /blogs/:id/comments (protected) - detail view of a particular blog and its comments.
-+ etc.
-+ etc.
+## Independent learning
 
-## Independent learning (If relevant).
+Styling
+Use of linear gradient, styled with hook api for more info button
+https://material-ui.com/styles/basics/
 
-....... Briefly state any technologies/techniques used in your project codebase that was not covered in the lectures/labs. Provide source code filename (source code excerpts are not required in most cases) references to support your assertions and include references (articles/blogs) ......... 
+Hidden
+Breakpoint down iteration with grid
+https://material-ui.com/components/hidden/
 
 
 [model]: ./data.jpg
 [view]: ./view.png
 [stories]: ./storybook.png
+[append]: ./AppendToResponse.jpg
+[trending]: ./TrendingEndpoint.png
+[toprated]: ./TopRatedEndpoint.png
+[mustwatch]: ./MustWatchMovies.png
+[topratedmovies]: ./TopRatedMovies.png
+[trendingmovies]: ./TrendingMovies.png
+[responsive]: ./responsivebreakpoint.jpg
