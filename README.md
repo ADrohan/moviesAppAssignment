@@ -5,6 +5,7 @@ Name: Aileen Drohan
 ## Overview.
 
 The app concept is to expand upon the Movies App - an app for movie lovers - created using the TMBD database.
+https://www.themoviedb.org/
 
  New/modified features:
  
@@ -12,11 +13,12 @@ The app concept is to expand upon the Movies App - an app for movie lovers - cre
  + movieCard2 (new UI design)
  + templateMoviesListPage2 (new UIdesign)
  + filterMoviesCard2 (new UI design)
- + util.js (compact function added to truncate character length to 200)
- + templateMoviePage (production companies and cast added)
+ + util.js (compact function added to truncate character length to 200, for use in new movie card)
+ + Movie Details Component (production companies added, cast added and Similar Movies floating action button)
  + templateMoviePage (breakpoint down integration with grid)
  + Top rated movies Page (utilising new UI design)
  + Trending Movies Page (utilising new UI design)
+ + Similar Movies Page (utilising new UI design) 
 
 ## Setup requirements.
 
@@ -28,33 +30,41 @@ Create a .env file to separate your secrets from your source code. Required in t
 REACT_APP_TMDB_KEY='your api key'
 FAST_REFRESH=false
 
-Don't forget to nclude your .env file in your .gitignore (before pushing to your own repository to keep your api key a secret)
+Don't forget to include your .env file in your .gitignore (before pushing to your own repository to keep your api key a secret)
 
 Run npm install (from the app base folder)
 Run npm start
 Run npm run storybook (if relevant)
 
 ## API Data Model.
-
+Get a specific movie by id
+Note: Credits are appended to response to return Cast data required
 https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_TMDB_KEY}&append_to_response=credits
-
+Example of JSON data returned:
 ![][append]
 
+Get Top Rated Movies
 https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&page=1
-
+Example of JSON data returned:
 ![][toprated]
 
+Get Trending Movies
 https://api.themoviedb.org/3/trending/movie/day?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&page=1
-
+Example of JSON data returned:
 ![][trending]
+
+Get Similar Movies to the id specified
+https://api.themoviedb.org/3/movie/${id}/similar?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1
+Example of JSON data returned:
+![][similar]
 
 ## App Design.
 
 ### Component catalogue.
 
-....... Insert a screenshot from the Storybook UI showing your component catalogue. [For the Movies app, hi-light stories relating to new/modified components - see the example screenshot below] .......
+Screenshot from the Storybook UI showing my component catalogue. The hi-light stories relating to new/modified components
 
-![][stories]
+![][mystories]
 
 ### UI Design.
 
@@ -67,12 +77,23 @@ https://api.themoviedb.org/3/trending/movie/day?api_key=${process.env.REACT_APP_
 ![][trendingmovies]
 >Trending movies page.
 
+![][similarfab]
+> Clicking the 'Similar Movies' floating action button will display a page of similar movies to the movie currently in view.
+
+![][similarmovies]
+>Similar movies page rendered after clicking on the'Similar Movies' floating action button.
+
+![][responsive]
+>Responsive breakpoint down with grid list
+
 
 ### Routing.
 
 + GET /movie/{movie_id}   - with append_to_response support for credits
 + GET /trending/{media_type}/{time_window}  - media_type used = movie, time_window used = day
 + GET /movie/top_rated - gets top rated movies
++ GET /movie/{movie_id}/similiar - gets similar movies to the movie id specified
+
 
 ## Independent learning
 
@@ -91,7 +112,11 @@ https://material-ui.com/components/hidden/
 [append]: ./AppendToResponse.jpg
 [trending]: ./TrendingEndpoint.png
 [toprated]: ./TopRatedEndpoint.png
+[similar]: ./similarMoviesEndpoint.png
 [mustwatch]: ./MustWatchMovies.png
 [topratedmovies]: ./TopRatedMovies.png
 [trendingmovies]: ./TrendingMovies.png
+[similarmovies]: ./SimilarMoviesPage.png
+[similarfab]: ./SimilarFab.png
 [responsive]: ./responsivebreakpoint.jpg
+[mystories]: ./mystories.png
