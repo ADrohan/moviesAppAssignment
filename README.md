@@ -37,25 +37,24 @@ Run npm start
 Run npm run storybook (if relevant)
 
 ## API Data Model.
-Get a specific movie by id
-Note: Credits are appended to response to return Cast data required
+### Get a specific movie by id with credits appended to response
 https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_TMDB_KEY}&append_to_response=credits
-Example of JSON data returned:
+>Example of JSON data returned:
 ![][append]
 
-Get Top Rated Movies
+### Get Top Rated Movies
 https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&page=1
-Example of JSON data returned:
+>Example of JSON data returned:
 ![][toprated]
 
-Get Trending Movies
+### Get Trending Movies
 https://api.themoviedb.org/3/trending/movie/day?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&page=1
-Example of JSON data returned:
+>Example of JSON data returned:
 ![][trending]
 
-Get Similar Movies to the id specified
+### Get Similar Movies to the id specified
 https://api.themoviedb.org/3/movie/${id}/similar?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1
-Example of JSON data returned:
+>Example of JSON data returned:
 ![][similar]
 
 ## App Design.
@@ -97,11 +96,11 @@ Screenshot from the Storybook UI showing my component catalogue. The hi-light st
 
 ## Independent learning
 
-Styling
+### Styling
 Use of linear gradient, styled with hook api for more info button
 https://material-ui.com/styles/basics/
 
-Hidden
+### Hidden
 Breakpoint down iteration with grid
 https://material-ui.com/components/hidden/
 
