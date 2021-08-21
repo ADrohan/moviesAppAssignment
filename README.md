@@ -3,15 +3,18 @@
 Name: Aileen Drohan
 
 ## Overview.
-
-The app concept is to expand upon the Movies App - an app for movie lovers - created using the TMBD database.
+The app concept: This is an app for movie lovers, to help users decide if they would like to see a movie. 
+The app now hosts two movie card designs and two filter card designs for users to search by movie title or genre. Tagged movies in the upcoming movies page will render in a mustwatch page for user to keep track of movies they would like to see, with delete funtionality to remove movies already watched from this page. Added to the The movie details page is a new link to view similar movies to the current movie in view. Movie information additionally returns the cast information and production companies on a particular movie. Users may also request to see the top rated movies and trending movies.
+The application makes requests to TMDB API for movie data
 https://www.themoviedb.org/
+
+
 
  New/modified features:
  
  + Must Watch page (renders tagged upcoming movies in Must Watch Page)
  + movieCard2 (new UI design)
- + templateMoviesListPage2 (new UIdesign)
+ + templateMoviesListPage2 (new UI design)
  + filterMoviesCard2 (new UI design)
  + util.js (compact function added to truncate character length to 200, for use in new movie card)
  + Movie Details Component (production companies added, cast added and Similar Movies floating action button)
