@@ -4,8 +4,8 @@ Name: Aileen Drohan
 
 ## Overview.
 The app concept: This is an app for movie lovers, to help users decide if they would like to see a movie. 
-The app now hosts two movie card designs and two filter card designs for users to search by movie title or genre. Tagged movies in the upcoming movies page will render in a mustwatch page for user to keep track of movies they would like to see, with delete funtionality to remove movies already watched from this page. Added to the The movie details page is a new link to view similar movies to the current movie in view. Movie information additionally returns the cast information and production companies on a particular movie. Users may also request to see the top rated movies and trending movies.
-The application makes requests to TMDB API for movie data
+The app now hosts two movie card designs and two filter card designs for users to search by movie title or by genre. Tagged movies in the upcoming movies page will now render in a 'must watch' page for user to keep track of movies they would like to see, with the same delete funtionality as before to remove movies already watched from this page. Added to the the 'movie details' page is a new link to view 'similar movies' to the current movie in view. The movie information returned additionally includes the cast information and production companies on a particular movie. Users may also request to see 'top rated' movies and 'trending' movies. Any tagged movies on the top rated or tending movies pages will be added to the favourite movies page. 
+The application makes requests to TMDB API for movie data.
 https://www.themoviedb.org/
 
 
